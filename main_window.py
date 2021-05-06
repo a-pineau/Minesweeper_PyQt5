@@ -11,17 +11,10 @@ from PyQt5.QtWidgets import (QMainWindow, QApplication, QMessageBox,
                              QGridLayout, QWidget, QLayout)
 
 BASE_FOLDER = os.path.dirname(__file__)
-
-if platform.system() == "Windows":
-    IMG_BOMB_PATH = os.path.join(BASE_FOLDER, r"images\bomb.png")
-    IMG_FLAG_PATH = os.path.join(BASE_FOLDER, r"images\flag.png")
-    IMG_RESTART_PATH = os.path.join(BASE_FOLDER, r"images\restart.png")
-    IMG_GIVEUP_PATH = os.path.join(BASE_FOLDER, r"images\lock.png")
-else:
-    IMG_BOMB_PATH = os.path.join(BASE_FOLDER, r"images/bomb.png")
-    IMG_FLAG_PATH = os.path.join(BASE_FOLDER, r"images/flag.png")
-    IMG_RESTART_PATH = os.path.join(BASE_FOLDER, r"images/restart.png")
-    IMG_GIVEUP_PATH = os.path.join(BASE_FOLDER, r"images/lock2.png")
+IMG_BOMB_PATH = os.path.join(BASE_FOLDER, f"images{os.sep}bomb.png")
+IMG_FLAG_PATH = os.path.join(BASE_FOLDER, f"images{os.sep}flag.png")
+IMG_RESTART_PATH = os.path.join(BASE_FOLDER, f"images{os.sep}restart.png")
+IMG_GIVEUP_PATH = os.path.join(BASE_FOLDER, f"images{os.sep}lock2.png")
 COLORS = ['#0042FF', # 1 neighbours: blue
           '#248B00', # 2 neighbours: green
           '#FF0000', # 3 neighbours: red
@@ -81,8 +74,6 @@ class Window(QMainWindow):
         self._timer = QTimer()
         self._timer.timeout.connect(self._update_timer)
         self._timer.start(1000) 
-    
-    
 
     def _create_menu_bar(self):
         """ Create the menu bar (Difficulty)
@@ -116,8 +107,8 @@ class Window(QMainWindow):
         """
         # Game size
         self.action_easy.triggered.connect(lambda: self._change_game_size(10, 10, 10, 35))
-        self.action_medium.triggered.connect(lambda: self._change_game_size(20, 20, 40, 30))
-        self.action_hard.triggered.connect(lambda: self._change_game_size(25, 35, 99, 25))
+        self.action_medium.triggered.connect(lambda: self._change_game_size(20, 20, 40, 25))
+        self.action_hard.triggered.connect(lambda: self._change_game_size(25, 35, 99, 20))
 
     def _create_top_frame(self):
         """ Create the top frame
@@ -224,7 +215,6 @@ class Window(QMainWindow):
             self._restart_game()
         elif msg.clickedButton() == quit_button:
             self.close()
-
 
     def _reveal_bombs(self):
         """ Reveal the bombs locations
