@@ -76,10 +76,13 @@ class Window(QMainWindow):
         self.setCentralWidget(self.central_widget)
         self.V_layout.addLayout(self.h_layout)
         self.V_layout.addLayout(self.grid_layout)
+        self.V_layout.setSizeConstraint(QLayout.SetFixedSize)
 
         self._timer = QTimer()
         self._timer.timeout.connect(self._update_timer)
         self._timer.start(1000) 
+    
+    
 
     def _create_menu_bar(self):
         """ Create the menu bar (Difficulty)
@@ -336,7 +339,6 @@ class Window(QMainWindow):
             
         # And add new one
         self._create_buttons_grid()
-
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
