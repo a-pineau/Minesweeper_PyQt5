@@ -12,3 +12,4 @@ Medium (20x20 grid, 40 bombs)
 Hard (20x35 grid, 99 bombs)
 
 ![Minesweeper](screenshot_1.png)
+![Minesweeper](screenshot_2.png)
