@@ -1,6 +1,6 @@
 # Minesweeper_PyQt5
 Simple minesweeper game using PyQt5.
-Left click: dig a stop.
+Left click: dig a spot.
 Right click: adds a marker (flag).
 
 3 difficulties:
